@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title>Minha casa</title>
+    </head>
+    <body>
+        {% block content %}{% endblock %}
+        <ul>
+            {% for key, value in devices.items() %}
+                <li>{{ key }} : {{ value }}</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

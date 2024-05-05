@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Minha Casa</title>
+    </head>
+    <body>
+        {% extends "base1.html" %}
+        {% block content %}
+        <ul>
+            {% for key, value in atuadores.items() %}
+                <li>{{ key }} : {{ value }}</li>
+                {% if value == 0 %}
+                    <li>Desligado</li>
+                {% else %}
+                    <li>Ligado</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <p>Voltar para <a href="/">página inicial</a>!</p>
+        {% endblock %}
+    </body>
+</html>
