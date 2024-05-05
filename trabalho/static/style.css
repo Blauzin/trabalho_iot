@@ -1,0 +1,42 @@
+body {
+    font-family: sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.sensor {
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+.sensor h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.sensor img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.valor, .historico {
+    margin-top: 10px;
+}
+
+.valor p {
+    margin-bottom: 5px;
+}
+
+.historico ul {
+    list-style: none;
+    padding: 0;
+}
+
+.historico li {
+    margin-bottom: 5px;
+}
