@@ -13,25 +13,7 @@
                 <div class="sensor-value">
                 <h2>{{ sensor.value }}</h2>
                 </div>
-                </div>
-                <div class="history">
-    <h5>History</h5>
-    <div class="history-values">
-        {% for value in sensor.history|slice(-5) %}
-            <div class="history-value-box">
-                {{ value }}
             </div>
-        {% endfor %}
-    </div>
-</div><div class="history">
-                <h5>History</h5>
-                <div class="history-values">
-                {% for value in sensor.history|slice(-5) %}
-                    <div class="history-value-box">
-                        {{ value }}
-            </div>
-        {% endfor %}
-    </div>
 </div>
         </div>
         {% endfor %}

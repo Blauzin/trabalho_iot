@@ -4,14 +4,20 @@
     <div class="actuators-container">
         {% for actuator in actuators %}
             <div class="actuator-block">
-                <h4>{{ actuator.name }}</h4>
-                <img src="{{ url_for('static', filename='images/' + actuator.image) }}" alt="{{ actuator.name }}">
-                <p>State: {{ actuator.state }}</p>
-                <div class="controls">
-                <button>On</button>
-                <button>Off</button>
+                <div class="actuator-description">
+                    <div class="actuator-desc-left">
+                    <h4>{{ actuator.name }}</h4>
+                    <img src="{{ url_for('static', filename='images/' + actuator.image) }}" alt="{{ actuator.name }}">
+                    </div>
+                    <div class="state">
+                    <p>State: {{ actuator.state }}</p>                             
+                    </div>
+                    <div class="controls">
+                        <button>On</button>
+                        <button>Off</button>
+                    </div>
+                </div>
             </div>
-        </div>
             
         {% endfor %}
     </div>

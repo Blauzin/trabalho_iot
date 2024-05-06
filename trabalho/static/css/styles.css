@@ -54,7 +54,7 @@
       margin-bottom: 10px;
       padding: 10px;
       width: 25rem;
-      height: 40%;
+      height: 30%;
       background-color: var(--box-background);
       border-radius: 10px;
       margin: 5rem;
@@ -70,15 +70,19 @@
   color: var(--accent-color);
 }
 
-.sensor-value{
+.sensor-value, .state{
   padding-right: 20%;
 }
-.sensor-description{
+.actuator-description {
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.sensor-description {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;  display: flex;
-    flex-direction: row;
+    align-items: center;    
 }
 .sensor-desc-left h4 {
   display: flex;
