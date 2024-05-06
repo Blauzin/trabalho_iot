@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="actuators-container">
+        {% for actuator in actuators %}
+            <div class="actuator-block">
+                <h4>{{ actuator.name }}</h4>
+                <img src="{{ url_for('static', filename='images/' + actuator.image) }}" alt="{{ actuator.name }}">
+                <p>State: {{ actuator.state }}</p>
+                <div class="controls">
+                <button>On</button>
+                <button>Off</button>
+            </div>
+        </div>
+            
+        {% endfor %}
+    </div>
+{% endblock %}

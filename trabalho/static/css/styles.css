@@ -1,0 +1,181 @@
+  @import url('https://fonts.googleapis.com/css?family=Merriweather:700|Lato:400');
+
+  :root{
+    --background-color: #0A100B;
+    --primary-color: #95d3a1;
+    --secondary-color: #238435;
+    --accent-color: #47e565;
+    --box-background: #121713;
+    --text: #eceeec;
+  }
+  *{
+    color: var(--text);
+    box-sizing: border-box;
+    scroll-padding-top: 3em;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    width: auto;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    position: relative;
+    font-family: 'Lato';
+    font-weight: 400;
+    background-color: var(--background-color);
+    line-height: 1.75;
+  }
+
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Merriweather';
+    font-weight: 700;
+  }
+
+  html {font-size: 100%;} /* 16px */
+
+  h1 {font-size: 4.210rem; /* 67.36px */}
+
+  h2 {font-size: 3.158rem; /* 50.56px */}
+
+  h3 {font-size: 2.369rem; /* 37.92px */}
+
+  h4 {font-size: 1.777rem; /* 28.48px */}
+
+  h5 {font-size: 1.333rem; /* 21.28px */}
+
+  small {font-size: 0.750rem; /* 12px */}
+
+.sensor-block, .actuator-block {
+      margin-bottom: 10px;
+      padding: 10px;
+      width: 25rem;
+      height: 40%;
+      background-color: var(--box-background);
+      border-radius: 10px;
+      margin: 5rem;
+      flex-direction: column;
+      align-items: center;
+  }
+.sensor-block img, .actuator-block img {
+    width: 150px;
+    height: 150px; 
+    border-radius: 10px;
+}
+.history h5{
+  color: var(--accent-color);
+}
+
+.sensor-value{
+  padding-right: 20%;
+}
+.sensor-description{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;  display: flex;
+    flex-direction: row;
+}
+.sensor-desc-left h4 {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+  .controls{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .sensors-container,  .actuators-container{
+    display: flex;
+    padding: 1rem;
+  }
+  img {
+      max-width: 100%;
+      height: auto;
+  }
+  /* The side navigation menu */
+  .dash-cols{
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      height: 90vh;
+      gap: 1rem;
+      position: relative;
+  }
+  .sidebar {
+    padding-top: 10%;
+    height: 100%;
+    width: 20%;
+    border-radius: 10px;
+    background-color: var(--box-background);
+    padding: 1em;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: .5em;
+  }
+
+
+  /* Sidebar links */
+  .sidebar a {
+      text-decoration: none;
+      font-size: 1.333rem;
+      filter: brightness(60%);
+      border: none;
+      border-radius: 50px;
+      background-color: transparent;
+      height: 50px;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 1em;
+      gap: 1em;
+      cursor: pointer;
+      text-align: center;
+      color: var(--text);
+  }
+
+  .sidebar a.active {
+    filter: opacity();
+    background-color: var(--secondary-color);
+    color: var(--text);
+    filter: brightness(100%);
+  }
+
+  /* Links on mouse-over */
+  .sidebar a:hover:not(.active) {
+    filter: brightness(100%);
+  }
+
+  div.content {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* On screens that are less than 700px wide, make the sidebar into a topbar */
+  @media screen and (max-width: 700px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .sidebar a {float: left;}
+    div.content {margin-left: 0;}
+  }
+
+  /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+  @media screen and (max-width: 400px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+  }

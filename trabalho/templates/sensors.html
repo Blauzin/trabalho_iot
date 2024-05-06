@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="sensors-container">
+        {% for sensor in sensors %}
+            <div class="sensor-block">
+                <div class="sensor-description">
+                    <div class="sensor-desc-left"> 
+                        <h4>{{ sensor.name }}</h4>
+                        <img src="{{ url_for('static', filename='images/' + sensor.image) }}" alt="{{ sensor.name }}">
+                    </div>
+                <div class="sensor-value">
+                <h2>{{ sensor.value }}</h2>
+                </div>
+                </div>
+                <div class="history">
+    <h5>History</h5>
+    <div class="history-values">
+        {% for value in sensor.history|slice(-5) %}
+            <div class="history-value-box">
+                {{ value }}
+            </div>
+        {% endfor %}
+    </div>
+</div><div class="history">
+                <h5>History</h5>
+                <div class="history-values">
+                {% for value in sensor.history|slice(-5) %}
+                    <div class="history-value-box">
+                        {{ value }}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
