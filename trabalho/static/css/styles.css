@@ -1,12 +1,15 @@
   @import url('https://fonts.googleapis.com/css?family=Merriweather:700|Lato:400');
+@import url('sensor-actuactor.css'); /** Separei os arquivos para organizar */
+@import url('login.css');
+
 
   :root{
-    --background-color: #0A100B;
-    --primary-color: #95d3a1;
-    --secondary-color: #238435;
-    --accent-color: #47e565;
-    --box-background: #121713;
-    --text: #eceeec;
+    --background-color: #eff5f0;
+    --primary-color: #2c6838;
+    --secondary-color: #7adc8c;
+    --accent-color: #1ab737;
+    --box-background: #e8ede8;
+    --text: #111311;
   }
   *{
     color: var(--text);
@@ -27,7 +30,6 @@
     font-family: 'Lato';
     font-weight: 400;
     background-color: var(--background-color);
-    line-height: 1.75;
   }
 
 
@@ -49,67 +51,15 @@
   h5 {font-size: 1.333rem; /* 21.28px */}
 
   small {font-size: 0.750rem; /* 12px */}
-
-.sensor-block, .actuator-block {
-      margin-bottom: 10px;
-      padding: 10px;
-      width: 25rem;
-      height: 30%;
-      background-color: var(--box-background);
-      border-radius: 10px;
-      margin: 5rem;
-      flex-direction: column;
-      align-items: center;
-  }
-.sensor-block img, .actuator-block img {
-    width: 150px;
-    height: 150px; 
-    border-radius: 10px;
-}
-.history h5{
-  color: var(--accent-color);
-}
-
-.sensor-value, .state{
-  padding-right: 20%;
-}
-.actuator-description {
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-.sensor-description {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;    
-}
-.sensor-desc-left h4 {
-  display: flex;
-  margin: 0;
-  padding: 0;
-}
-  .controls{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .sensors-container,  .actuators-container{
-    display: flex;
-    padding: 1rem;
-  }
-  img {
-      max-width: 100%;
-      height: auto;
-  }
-  /* The side navigation menu */
-  .dash-cols{
+.dash-cols{
       display: flex;
       flex-direction: row;
-      width: 100%;
+      width: 95vw;
       height: 90vh;
       gap: 1rem;
       position: relative;
+      margin-top: 1%;
+
   }
   .sidebar {
     padding-top: 10%;
@@ -124,6 +74,7 @@
     justify-content: flex-start;
     align-items: center;
     gap: .5em;
+    min-width: 15%;
   }
 
 
@@ -163,23 +114,4 @@
   div.content {
     display: flex;
     justify-content: space-between;
-  }
-
-  /* On screens that are less than 700px wide, make the sidebar into a topbar */
-  @media screen and (max-width: 700px) {
-    .sidebar {
-      width: 100%;
-      height: auto;
-      position: relative;
-    }
-    .sidebar a {float: left;}
-    div.content {margin-left: 0;}
-  }
-
-  /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
-  @media screen and (max-width: 400px) {
-    .sidebar a {
-      text-align: center;
-      float: none;
-    }
   }

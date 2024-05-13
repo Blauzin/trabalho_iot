@@ -1,26 +1,32 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for, session
+from auth import auth
+from actuators import actuator_bp
+from config import sensor_data, actuator_data, sensor_history
 
 app = Flask(__name__)
+app.secret_key = 'my_very_secret_key'
 
-@app.route('/')
-def index():
-    return render_template('base.html', active_page='home')
+app.register_blueprint(auth, url_prefix='/')
+app.register_blueprint(actuator_bp)
+
 
 @app.route('/sensors')
 def sensors():
-    sensor_data = [
-        {'name': 'Sensor 1', 'image': 'sensor1.jpg', 'value': 25},
-        {'name': 'Sensor 2', 'image': 'sensor2.jpg', 'value': 30}
-    ]
-    return render_template('sensors.html', sensors=sensor_data, active_page='sensors')
+    
+    return render_template('sensors.html', sensors=sensor_data, sensor_history = sensor_history, active_page='sensors')
 
 @app.route('/actuators')
 def actuators():
-    actuator_data = [
-        {'name': 'Actuator 1', 'image': 'actuator1.jpg', 'state': 'On'},
-        {'name': 'Actuator 2', 'image': 'actuator2.jpg', 'state': 'Off'}
-    ]
+
     return render_template('actuators.html', actuators=actuator_data, active_page='actuators')
+
+@app.route('/manage_sensors')
+def manage_sensors():
+    return ('sensors')
+
+@app.route('/manage_users')
+def manage_users():
+    return ('users')
 
 if __name__ == '__main__':
     app.run(debug=True)

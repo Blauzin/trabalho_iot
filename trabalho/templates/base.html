@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sensors and Actuators</title>
+    <title>Vazou não</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,9 +10,15 @@
 <body>
 <div class="dash-cols">
 <div class="sidebar">
-    <a class="{{ 'active' if active_page == 'home' else '' }}" href="/">Home</a>
+    <a class="{{ 'active' if active_page == 'home' else '' }}" href="{{url_for('auth.home')}}">Home</a>
     <a class="{{ 'active' if active_page == 'sensors' else '' }}" href="{{ url_for('sensors') }}">Sensors</a>
     <a class="{{ 'active' if active_page == 'actuators' else '' }}" href="{{ url_for('actuators') }}">Actuators</a>
+
+    {% if 'is_admin' in session and session['is_admin'] %}
+        <a class="{{ 'active' if active_page == 'manage_users' else '' }}" href="{{ url_for('manage_users') }}">Manage Users</a>
+        <a class="{{ 'active' if active_page == 'manage_sensors' else '' }}" href="{{ url_for('manage_sensors') }}">Manage Sensors</a>
+        <a class="{{ 'active' if active_page == 'manage_actuators' else '' }}" href="{{ url_for('actuator_bp.show_actuators') }}">Manage Actuators</a>
+    {% endif %}
 </div> 
         
         <div class="content">

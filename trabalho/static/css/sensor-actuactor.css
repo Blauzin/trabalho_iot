@@ -1,0 +1,107 @@
+  .sensors-container,  .actuators-container{
+    display: flex;
+    padding: 1rem;
+    flex-direction: column;
+  }
+  
+.sensor-block, .actuator-block {
+    padding: 10px;
+    height: 20rem;
+    width: 70vw;
+    background-color: var(--box-background);
+    border-radius: 10px;
+    margin: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+.sensor-block img, .actuator-block img {
+    width: 200px; 
+    height: 200px; 
+    border-radius: 10px;
+}
+.history h5{
+  color: var(--accent-color);
+}
+
+.sensor-value, .state{
+    margin-left: 40%;
+}
+.actuator-description, .sensor-description {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 1rem;
+    height: 100%;
+    align-items: center;
+}
+
+.sensor-desc-left, .actuator-desc-left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90%;
+    justify-content: space-around;
+}
+.sensor-desc-left h4, .actuator-desc-left h4{
+    padding: 0px;
+    margin: 0px;
+}
+  .controls{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+    height: 90%;
+    justify-content: space-evenly;
+  }
+  .controls button {
+    width: 50%;
+    height: 40%;
+    color: var(--accent-color);
+    padding: 0.5rem;
+    border-radius: 10px;
+    background-color: var(--background-color);
+    border: none;
+    overflow: auto;
+    font-size: 1.777rem;
+  }
+
+.controls-on:hover {
+    background-color: var(--accent-color); 
+    color: black;
+}
+
+.controls-off:hover {
+    background-color: red; 
+    color: black;
+}
+
+.history {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 5px;
+    margin-left: 100%;
+    width: 200px;
+}
+
+.history-list {
+ list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 200px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+.history h5{
+    margin: 0px;
+    padding: 0px;
+}
+.history-list li {
+    padding: 5px;
+    border-bottom: 1px solid #eee; /
+}
+
+.history-list li:last-child {
+    border-bottom: none; 
+}
