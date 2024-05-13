@@ -1,13 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for, session
-from auth import auth
-from actuators import actuator_bp
 from config import sensor_data, actuator_data, sensor_history
-
+from blueprints import auth, actuators
 app = Flask(__name__)
 app.secret_key = 'my_very_secret_key'
 
-app.register_blueprint(auth, url_prefix='/')
-app.register_blueprint(actuator_bp)
+app.register_blueprint(auth.auth, url_prefix='/')
+app.register_blueprint(actuators.actuator_bp)
 
 
 @app.route('/sensors')

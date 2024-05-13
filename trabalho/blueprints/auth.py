@@ -8,11 +8,10 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        for user in users:
-            if user['username'] == username and user['password'] == password:
-                session['username'] = username
-                session['is_admin'] = user['is_admin']
-                return redirect(url_for('auth.home'))
+        if username in users and users[username]['password'] == password:
+            session['username'] = username
+            session['is_admin'] = users[username]['is_admin']
+            return redirect(url_for('auth.home'))
         return '<h1>Invalid credentials!</h1>'
     else:
         return render_template('login.html')
@@ -30,3 +29,4 @@ def logout():
     session.pop('username', None)
     session.pop('is_admin', None)
     return redirect(url_for('auth.login'))
+

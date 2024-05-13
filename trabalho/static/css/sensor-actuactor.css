@@ -13,7 +13,6 @@
     margin: 1rem;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
   }
 .sensor-block img, .actuator-block img {
@@ -26,20 +25,20 @@
 }
 
 .sensor-value, .state{
-    margin-left: 40%;
+    margin-left: 5rem;
 }
 .actuator-description, .sensor-description {
     display: flex;
     justify-content: space-between;
     margin-left: 1rem;
     height: 100%;
+    width: 100%;
     align-items: center;
 }
 
 .sensor-desc-left, .actuator-desc-left{
     display: flex;
     flex-direction: column;
-    align-items: center;
     height: 90%;
     justify-content: space-around;
 }
@@ -81,7 +80,7 @@
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 5px;
-    margin-left: 100%;
+    margin-left: 5rem;
     width: 200px;
 }
 
@@ -104,4 +103,88 @@
 
 .history-list li:last-child {
     border-bottom: none; 
+}
+
+
+/** Management controls */
+.actuator-controls.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; 
+  height: 100%;
+  justify-content: space-around; 
+  padding: 20px; 
+}
+
+.actuator-controls button {
+  width: 100%;
+  height: 100%; 
+  color: var(--text);
+  font-size: 2.369rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: var(--accent-color);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+.actuator-controls .delete-button {
+  background-color: var(--background-color);
+}
+
+.actuator-controls .delete-button:hover {
+  background-color: darkred;
+  color: white;
+}
+
+.actuator-controls .edit-button {
+  background-color: var(--background-color);
+
+}
+
+.actuator-controls .edit-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.add-actuator{
+    display: flex;
+    border-radius: 10px;
+    background-color: var(--box-background);
+    height: 5em;
+    width: auto;
+    min-height: 50px;
+}
+
+.add-actuator form{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.add-actuator input{
+    border-radius: 10px;
+    border: none;
+    height: 80%;
+    width: 70%;
+    font-size: 1.777rem;;
+}
+
+.add-actuator button{
+    border-radius: 10px;
+    height: 80%;
+    border: none;
+    width: 10%;
+    font-size: 1.777rem; 
+   transition: background-color 0.3s ease; 
+}
+
+.add-actuator button:hover{
+  background-color: var(--accent-color);
+  color: white;
 }

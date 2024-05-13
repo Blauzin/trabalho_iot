@@ -17,7 +17,7 @@
     {% if 'is_admin' in session and session['is_admin'] %}
         <a class="{{ 'active' if active_page == 'manage_users' else '' }}" href="{{ url_for('manage_users') }}">Manage Users</a>
         <a class="{{ 'active' if active_page == 'manage_sensors' else '' }}" href="{{ url_for('manage_sensors') }}">Manage Sensors</a>
-        <a class="{{ 'active' if active_page == 'manage_actuators' else '' }}" href="{{ url_for('actuator_bp.show_actuators') }}">Manage Actuators</a>
+        <a class="{{ 'active' if active_page == 'manage_actuators' else '' }}" href="{{ url_for('actuator_bp.manage_actuators') }}">Manage Actuators</a>
     {% endif %}
 </div> 
         

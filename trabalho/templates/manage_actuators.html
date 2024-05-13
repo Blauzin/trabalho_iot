@@ -2,32 +2,33 @@
 
 {% block content %}
 <div class="actuators-container">
-    {% for actuator in actuators %}
+    {% for actuator, actuator_details in actuators.items() %}
     <div class="actuator-block">
         <div class="actuator-description">
             <div class="actuator-desc-left">
-                <h4>{{ actuator.name }}</h4>
-                <img src="{{ url_for('static', filename='images/' + actuator.image) }}" alt="{{ actuator.name }}">
-            </div>
-            <div class="state">
-                <h2>{{ actuator.state }}</h2>
+                <h4>{{ actuator }}</h4>
+                <img src="{{ url_for('static', filename='images/' + (actuator_details.image if actuator_details.image else 'default.jpg')) }}" alt="{{ actuator }}">
             </div>
         </div>
-        <div class="controls">
-            <form action="{{ url_for('edit_actuator', id=actuator.id) }}" method="post">
+        <div class="actuator-controls controls">
+            <form action="{{ url_for('actuator_bp.edit_actuator', actuator_name=actuator) }}" method="post">
+                <input type="text" name="new_name" placeholder="New Name" value="{{ actuator }}">
                 <button type="submit" class="edit-button">Edit</button>
             </form>
-            <form action="{{ url_for('delete_actuator', id=actuator.id) }}" method="post">
+            <form action="{{ url_for('actuator_bp.del_actuator') }}" method="post">
+                <input type="hidden" name="name" value="{{ actuator }}">
                 <button type="submit" class="delete-button">Delete</button>
             </form>
         </div>
     </div>
     {% endfor %}
     <div class="add-actuator">
-        <form action="{{ url_for('add_actuator') }}" method="post">
+        <form action="{{ url_for('actuator_bp.add_actuator') }}" method="post">
             <input type="text" name="name" placeholder="Enter actuator name" required>
             <button type="submit">Add</button>
         </form>
     </div>
 </div>
 {% endblock %}
+
+
