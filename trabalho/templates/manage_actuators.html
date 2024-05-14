@@ -6,13 +6,13 @@
     <div class="actuator-block">
         <div class="actuator-description">
             <div class="actuator-desc-left">
-                <h4>{{ actuator }}</h4>
+                <h4>{{ actuator_details.name }}</h4>
                 <img src="{{ url_for('static', filename='images/' + (actuator_details.image if actuator_details.image else 'default.jpg')) }}" alt="{{ actuator }}">
             </div>
         </div>
         <div class="actuator-controls controls">
             <form action="{{ url_for('actuator_bp.edit_actuator', actuator_name=actuator) }}" method="post">
-                <input type="text" name="new_name" placeholder="New Name" value="{{ actuator }}">
+                <input type="text" name="new_name" placeholder="New Name" value="{{ actuator_details.name }}">
                 <button type="submit" class="edit-button">Edit</button>
             </form>
             <form action="{{ url_for('actuator_bp.del_actuator') }}" method="post">

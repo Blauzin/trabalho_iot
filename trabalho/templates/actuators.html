@@ -13,8 +13,11 @@
                     </div>
                 </div>
                 <div class="controls">
-                    <button class="controls-on">On</button>
-                    <button class="controls-off">Off</button>
+                    <form method="post">
+                        <input type="hidden" name="actuator" value="{{ actuator }}">
+                        <button class="controls-on" name="action" value="On">On</button>
+                        <button class="controls-off" name="action" value="Off">Off</button>
+                    </form>
                 </div>
             </div>
         {% endfor %}

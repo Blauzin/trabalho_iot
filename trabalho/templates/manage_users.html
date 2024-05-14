@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="users-container">
+    {% for user, user_details in users.items() %}
+    <div class="user-block">
+        <div class="user-description">
+            <div class="user-desc-left">
+                <h4>{{ user }}</h4>
+                <img src="{{ url_for('static', filename='images/' + (user_details.image if user_details.image else 'user.jpg')) }}" alt="{{ user }}">
+            </div>
+        </div>
+        <div class="user-controls controls">
+            <form action="{{ url_for('user_bp.edit_user', user_name=user) }}" method="post">
+                <input type="text" name="new_name" placeholder="New Name" value="{{ user }}">
+                <input type="password" name="new_password" placeholder="New Password">
+                <button type="submit" class="edit-button">Edit</button>
+            </form>
+            <form action="{{ url_for('user_bp.del_user') }}" method="post">
+                <input type="hidden" name="name" value="{{ user }}">
+                <button type="submit" class="delete-button">Delete</button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="add-user">
+        <form action="{{ url_for('user_bp.add_user') }}" method="post">
+            <input type="text" name="name" placeholder="Enter user name" required>
+            <input type="password" name="password" placeholder="Enter user password" required>
+            <button type="submit">Add</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+

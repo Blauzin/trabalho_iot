@@ -24,5 +24,6 @@ def del_actuator():
 @actuator_bp.route('/edit_actuator/<actuator_name>', methods=['POST'])
 def edit_actuator(actuator_name):
     new_name = request.form['new_name']
-    actuator_data[new_name] = actuator_data.pop(actuator_name) 
+    actuator_data[new_name] = actuator_data.pop(actuator_name)
+    actuator_data[new_name]['name'] = new_name  # Atualiza o nome do atuador
     return redirect(url_for('actuator_bp.manage_actuators'))

@@ -1,3 +1,8 @@
+  .content{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
   .sensors-container,  .actuators-container{
     display: flex;
     padding: 1rem;
@@ -107,7 +112,7 @@
 
 
 /** Management controls */
-.actuator-controls.controls {
+.actuator-controls.controls, .user-controls.controls, .user-controls.contorls {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -115,9 +120,10 @@
   height: 100%;
   justify-content: space-around; 
   padding: 20px; 
+  margin-bottom: 10px;
 }
 
-.actuator-controls button {
+.actuator-controls button, .user-controls button, .sensor-controls button {
   width: 100%;
   height: 100%; 
   color: var(--text);
@@ -131,26 +137,26 @@
 }
 
 
-.actuator-controls .delete-button {
+.actuator-controls .delete-button, .sensor-controls .delete-button, .user-controls .delete-button {
   background-color: var(--background-color);
 }
 
-.actuator-controls .delete-button:hover {
+.actuator-controls .delete-button:hover, .sensor-controls .delete-button:hover, .user-controls .delete-button:hover {
   background-color: darkred;
   color: white;
 }
 
-.actuator-controls .edit-button {
+.actuator-controls .edit-button, .sensor-controls .edit-button, .user-controls .edit-button {
   background-color: var(--background-color);
 
 }
 
-.actuator-controls .edit-button:hover {
+.actuator-controls .edit-button:hover, .sensor-controls .edit-button:hover, .user-controls .edit-button:hover {
   background-color: var(--primary-color);
   color: white;
 }
 
-.add-actuator{
+.add-actuator, .add-sensor, .add-user{
     display: flex;
     border-radius: 10px;
     background-color: var(--box-background);
@@ -159,7 +165,7 @@
     min-height: 50px;
 }
 
-.add-actuator form{
+.add-actuator form, .add-sensor form, .add-user form{
     display: flex;
     width: 100%;
     justify-content: space-around;
@@ -167,7 +173,7 @@
 }
 
 
-.add-actuator input{
+.add-actuator input, .add-sensor input, .add-user input{
     border-radius: 10px;
     border: none;
     height: 80%;
@@ -175,7 +181,7 @@
     font-size: 1.777rem;;
 }
 
-.add-actuator button{
+.add-actuator button, .add-sensor button, .add-user button{
     border-radius: 10px;
     height: 80%;
     border: none;
@@ -184,7 +190,149 @@
    transition: background-color 0.3s ease; 
 }
 
-.add-actuator button:hover{
+.add-actuator button:hover, .add-sensor button:hover, .add-user button:hover{
   background-color: var(--accent-color);
   color: white;
+}
+.users-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Individual user block styling */
+.user-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: var(--box-background);
+}
+
+/* User description styling */
+.user-description {
+  display: flex;
+  align-items: center;
+}
+
+/* Left part of the user description */
+.user-desc-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Image styling */
+.user-desc-left img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+/* User controls styling */
+.user-controls.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Form input and button styling */
+.user-controls form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.user-controls input {
+  margin-bottom: 10px;
+  padding: 5px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.user-controls button {
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Edit button styling */
+.user-controls .edit-button {
+  background-color: var(--background-color);
+}
+
+.user-controls .edit-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Delete button styling */
+.user-controls .delete-button {
+  background-color: var(--background-color);
+}
+
+.user-controls .delete-button:hover {
+  background-color: darkred;
+  color: white;
+}
+
+.add-user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: var(--box-background);
+  margin-top: 20px;
+}
+
+.add-user form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.add-user input {
+  margin-bottom: 10px;
+  padding: 5px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 80%;
+}
+
+.add-user button {
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: var(--accent-color);
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.add-user button:hover {
+  background-color: var(--primary-color);
+}
+
+.controls form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
 }

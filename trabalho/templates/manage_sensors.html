@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="sensors-container">
+    {% for sensor, sensor_details in sensors.items() %}
+    <div class="sensor-block">
+        <div class="sensor-description">
+            <div class="sensor-desc-left">
+                <h4>{{ sensor_details.name }}</h4>
+                <img src="{{ url_for('static', filename='images/' + (sensor_details.image if sensor_details.image else 'default.jpg')) }}" alt="{{ sensor }}">
+            </div>
+        </div>
+        <div class="sensor-controls controls">
+            <form action="{{ url_for('sensor_bp.edit_sensor', sensor_name=sensor) }}" method="post">
+                <input type="text" name="new_name" placeholder="New Name" value="{{ sensor_details.name }}">
+                <button type="submit" class="edit-button">Edit</button>
+            </form>
+            <form action="{{ url_for('sensor_bp.del_sensor') }}" method="post">
+                <input type="hidden" name="name" value="{{ sensor }}">
+                <button type="submit" class="delete-button">Delete</button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="add-sensor">
+        <form action="{{ url_for('sensor_bp.add_sensor') }}" method="post">
+            <input type="text" name="name" placeholder="Enter sensor name" required>
+            <button type="submit">Add</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
