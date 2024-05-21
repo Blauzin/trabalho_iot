@@ -3,9 +3,13 @@ from config import sensor_data, actuator_data, sensor_history, users
 from blueprints import auth, actuators, sensors, users as users_bp
 import paho.mqtt.client as mqtt
 import json
+from flask_login import LoginManager, login_user, logout_user, login_required, current_user
+from models import db, User, Role
 
 app = Flask(__name__)
 app.secret_key = 'my_very_secret_key'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+db.init_app(app)
 
 # MQTT setup
 broker = "mqtt-dashboard.com"
@@ -15,7 +19,7 @@ topic_sensor2 = "leakspy/sensor2"
 topic_actuators = "leakspy/actuators"
 
 def on_connect(client, userdata, flags, rc):
-    print("Connected with result code " + str(rc))
+    print("Connected with result code " + str(rc)) 
     client.subscribe([(topic_sensor1, 0), (topic_sensor2, 0)])
 
 def on_message(client, userdata, msg):
