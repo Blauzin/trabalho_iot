@@ -2,9 +2,9 @@
 {% block content %}
     <div class="home-container">
         <div class="welcome-text">
-            <h1>Welcome, <span class="username">{{ session['username'] }}</span>!</h1>
+            <h1>Welcome, <span class="username">{{ current_user.username }}</span>!</h1>
         </div>
-        <h5>Olá, você tem privelégios {{ 'admin' if session['is_admin'] else 'normais' }}.</h5>
+        <h5>Olá, você tem privelégios {{ current_user.role }}.</h5>
         <a href="{{ url_for('auth.logout') }}" class="btn">Logout</a>
     </div>
 {% endblock %}

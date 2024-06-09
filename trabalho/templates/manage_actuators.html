@@ -2,21 +2,21 @@
 
 {% block content %}
 <div class="actuators-container">
-    {% for actuator, actuator_details in actuators.items() %}
+    {% for actuator in actuators %}
     <div class="actuator-block">
         <div class="actuator-description">
             <div class="actuator-desc-left">
-                <h4>{{ actuator_details.name }}</h4>
-                <img src="{{ url_for('static', filename='images/' + (actuator_details.image if actuator_details.image else 'default.jpg')) }}" alt="{{ actuator }}">
+                <h4>{{ actuator.name }}</h4>
+                <img src="{{ url_for('static', filename='images/' + (actuator.image if actuator.image else 'default.jpg')) }}" alt="{{ actuator.name }}">
             </div>
         </div>
         <div class="actuator-controls controls">
-            <form action="{{ url_for('actuator_bp.edit_actuator', actuator_name=actuator) }}" method="post">
-                <input type="text" name="new_name" placeholder="New Name" value="{{ actuator_details.name }}">
+            <form action="{{ url_for('actuator_bp.edit_actuator', actuator_name=actuator.name) }}" method="post">
+                <input type="text" name="new_name" placeholder="New Name" value="{{ actuator.name }}">
                 <button type="submit" class="edit-button">Edit</button>
             </form>
             <form action="{{ url_for('actuator_bp.del_actuator') }}" method="post">
-                <input type="hidden" name="name" value="{{ actuator }}">
+                <input type="hidden" name="name" value="{{ actuator.name }}">
                 <button type="submit" class="delete-button">Delete</button>
             </form>
         </div>
@@ -30,5 +30,3 @@
     </div>
 </div>
 {% endblock %}
-
-

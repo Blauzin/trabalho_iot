@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="historical-data">
+    <h1>Historical Data</h1>
+    <form method="GET">
+        <label for="sensor_id">Sensor:</label>
+        <select name="sensor_id" id="sensor_id">
+            {% for sensor in sensors %}
+            <option value="{{ sensor.id }}">{{ sensor.name }}</option>
+            {% endfor %}
+        </select>
+        <label for="start_date">Start Date:</label>
+        <input type="date" name="start_date" id="start_date" required>
+        <label for="end_date">End Date:</label>
+        <input type="date" name="end_date" id="end_date" required>
+        <button type="submit">Submit</button>
+    </form>
+    {% if data %}
+    <table>
+        <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>Sensor</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in data %}
+            <tr>
+                <td>{{ entry.timestamp }}</td>
+                <td>{{ entry.sensor.name }}</td>
+                <td>{{ entry.value }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No data available.</p>
+    {% endif %}
+</div>
+{% endblock %}

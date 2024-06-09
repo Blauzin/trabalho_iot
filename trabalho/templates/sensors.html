@@ -2,20 +2,20 @@
 
 {% block content %}
 <div class="sensors-container">
-    {% for sensor_id, sensor_details in sensors.items() %}
+    {% for sensor in sensors %}
     <div class="sensor-block">
         <div class="sensor-description">
             <div class="sensor-desc-left">
-                <h4>{{ sensor_details.name }}</h4>
-                <img src="{{ url_for('static', filename='images/' + sensor_details.image) }}" alt="{{ sensor_details.name }}">
+                <h4>{{ sensor.name }}</h4>
+                <img src="{{ url_for('static', filename='images/' + sensor.image) }}" alt="{{ sensor.name }}">
             </div>
             <div class="sensor-value">
-                <h2>{{ sensor_details.value }}</h2>
+                <h2>{{ sensor.value }}</h2>
             </div>
             <div class="history">
                 <h5>History</h5>
                 <ul class="history-list">
-                    {% for entry in sensor_history[sensor_id] %}
+                    {% for entry in sensor.data %}
                         <li>{{ entry.timestamp }}: {{ entry.value }}</li>
                     {% endfor %}
                 </ul>
@@ -25,4 +25,3 @@
     {% endfor %}
 </div>
 {% endblock %}
-

@@ -2,22 +2,22 @@
 
 {% block content %}
 <div class="users-container">
-    {% for user, user_details in users.items() %}
+    {% for user in users %}
     <div class="user-block">
         <div class="user-description">
             <div class="user-desc-left">
-                <h4>{{ user }}</h4>
-                <img src="{{ url_for('static', filename='images/' + (user_details.image if user_details.image else 'user.jpg')) }}" alt="{{ user }}">
+                <h4>{{ user.username }}</h4>
+                <img src="{{ url_for('static', filename='images/' + (user.image if user.image else 'user.jpg')) }}" alt="{{ user.username }}">
             </div>
         </div>
         <div class="user-controls controls">
-            <form action="{{ url_for('user_bp.edit_user', user_name=user) }}" method="post">
-                <input type="text" name="new_name" placeholder="New Name" value="{{ user }}">
+            <form action="{{ url_for('user_bp.edit_user', user_name=user.username) }}" method="post">
+                <input type="text" name="new_name" placeholder="New Name" value="{{ user.username }}">
                 <input type="password" name="new_password" placeholder="New Password">
                 <button type="submit" class="edit-button">Edit</button>
             </form>
             <form action="{{ url_for('user_bp.del_user') }}" method="post">
-                <input type="hidden" name="name" value="{{ user }}">
+                <input type="hidden" name="name" value="{{ user.username }}">
                 <button type="submit" class="delete-button">Delete</button>
             </form>
         </div>
@@ -32,4 +32,3 @@
     </div>
 </div>
 {% endblock %}
-
