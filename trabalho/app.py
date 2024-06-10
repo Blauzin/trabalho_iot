@@ -31,11 +31,12 @@ port = 1883
 topic_sensor1 = "leakspy/sensor1"
 topic_sensor2 = "leakspy/sensor2"
 topic_actuators = "leakspy/actuators"
+topic_diff = "leakspy/diff_water"
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
-    client.subscribe([(topic_sensor1, 0), (topic_sensor2, 0), (topic_actuators, 0)])
-    print(f"Subscribed to topics: {topic_sensor1}, {topic_sensor2}, {topic_actuators}")
+    client.subscribe([(topic_sensor1, 0), (topic_sensor2, 0), (topic_actuators, 0), (topic_diff, 0) ])
+    print(f"Subscribed to topics: {topic_sensor1}, {topic_sensor2}, {topic_actuators}, {topic_diff}")
 
 def on_message(client, userdata, msg):
     with app.app_context():
@@ -70,6 +71,16 @@ def on_message(client, userdata, msg):
                 print(f"Actuator {actuator.name} updated with state {actuator.state}")
             else:
                 print(f"Actuator {payload['actuator']} not found")
+        elif msg.topic == topic_diff:
+            sensor = Sensor.query.filter_by(name='Water Loss').first()
+            if sensor:
+                print(f"Updating sensor {sensor.name} with value {payload['value']}")
+                sensor.value = payload['value']
+                db.session.add(SensorData(sensor_id=sensor.id, value=payload['value'], timestamp=datetime.now()))
+                db.session.commit()
+                print(f"Sensor {sensor.name} updated with value {sensor.value}")
+            else:
+                print("Sensor 'PotentiometerDifference' not found")
 
 mqtt_client = mqtt.Client()
 mqtt_client.on_connect = on_connect

@@ -23,15 +23,19 @@ with app.app_context():
     # Adicionar kits
     kit1 = Kit(name='Kit 1')
     kit2 = Kit(name='Kit 2')
+    kit3 = Kit(name='Kit 3')
     db.session.add(kit1)
     db.session.add(kit2)
+    db.session.add(kit3)
     db.session.commit()
 
     # Adicionar sensores e associá-los aos kits
     sensor1 = Sensor(name='Humidity', image='sensor1.png', value=25.0, kit_id=kit1.id)
     sensor2 = Sensor(name='Pressure', image='sensor2.png', value=30.0, kit_id=kit2.id)
+    sensor3 = Sensor(name='Water Loss', image='sensor3.png', value= 200.0, kit_id=kit3.id)
     db.session.add(sensor1)
     db.session.add(sensor2)
+    db.session.add(sensor3)
     db.session.commit()
 
     # Adicionar atuadores e associá-los aos kits
