@@ -94,22 +94,6 @@ app.register_blueprint(actuator_bp)
 app.register_blueprint(sensor_bp)
 app.register_blueprint(user_bp)
 
-@app.route('/historical_data')
-@login_required
-def historical_data():
-    if current_user.role not in ['Admin', 'Estatístico']:
-        return redirect(url_for('auth.home'))
-    sensors = Sensor.query.all()
-    sensor_id = request.args.get('sensor_id')
-    start_date = request.args.get('start_date')
-    end_date = request.args.get('end_date')
-    data = []
-    if sensor_id and start_date and end_date:
-        data = SensorData.query.filter(
-            SensorData.sensor_id == sensor_id,
-            SensorData.timestamp.between(start_date, end_date)
-        ).all()
-    return render_template('historical_data.html', sensors=sensors, data=data, active_page='historical_data')
 
 @app.route('/sensors')
 @login_required
@@ -143,7 +127,7 @@ def actuators():
 @app.route('/manage_sensors')
 @login_required
 def manage_sensors():
-    if current_user.role != 'Admin':
+    if current_user.role not in ['Admin', 'Estatístico']:
         return redirect(url_for('auth.home'))
     sensors = Sensor.query.all()
     return render_template('manage_sensors.html', sensors=sensors, active_page='manage_sensors')
@@ -151,33 +135,11 @@ def manage_sensors():
 @app.route('/manage_users')
 @login_required
 def manage_users():
-    if current_user.role != 'Admin':
+    if current_user.role not in ['Admin', 'Operador']:
         return redirect(url_for('auth.home'))
     users = User.query.all()
     return render_template('manage_users.html', users=users, active_page='manage_users')
 
-
-
-@app.route('/remote_commands', methods=['GET', 'POST'])
-@login_required
-def remote_commands():
-    if current_user.role not in ['Admin', 'Operador']:
-        return redirect(url_for('auth.home'))
-    actuators = Actuator.query.all()
-    if request.method == 'POST':
-        action = request.form.get('action')
-        actuator_name = request.form.get('actuator')
-        actuator = Actuator.query.filter_by(name=actuator_name).first()
-        if action == 'On':
-            actuator.state = 'On'
-        elif action == 'Off':
-            actuator.state = 'Off'
-        mqtt_client.publish(topic_actuators, json.dumps({
-            'actuator': actuator.name,
-            'state': actuator.state
-        }))
-        db.session.commit()
-    return render_template('remote_commands.html', actuators=actuators, active_page='remote_commands')
 
 if __name__ == '__main__':
     with app.app_context():

@@ -43,7 +43,7 @@ def add_sensor():
         return redirect(url_for('auth.home'))
     name = request.form['name']
     value = request.form['value']
-    new_sensor = Sensor(name=name, value=value)
+    new_sensor = Sensor(name=name, image='default_image.jpg',value=value)
     db.session.add(new_sensor)
     db.session.commit()
     return redirect(url_for('sensor_bp.manage_sensors'))

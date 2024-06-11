@@ -4,7 +4,10 @@
         <div class="welcome-text">
             <h1>Welcome, <span class="username">{{ current_user.username }}</span>!</h1>
         </div>
-        <h5>Olá, você tem privelégios {{ current_user.role }}.</h5>
+        <h4>You have {{ current_user.role }} privileges.</h5>
+        <h5>LeakSpy is a pipeline monitoring platform used to detect and analyze potential leaks and instabilities. Through
+        strategically positioned sensors, we collect real-time data on pressure, humidity, water intake and water outflow, allowing
+        for constant vigilance and rapid decision-making.</h5>
         <a href="{{ url_for('auth.logout') }}" class="btn">Logout</a>
     </div>
 {% endblock %}
